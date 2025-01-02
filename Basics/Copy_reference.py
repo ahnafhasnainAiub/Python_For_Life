@@ -8,5 +8,4 @@ print(b)
 # Change First Index Value
 a[0] = 32
 print(a)
-
 print(b)
