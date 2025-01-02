@@ -41,3 +41,6 @@ print(vehicle["Bike"]["Suzuki"])
 # Squared Number 
 sqr_number ={ n:n**2 for n in range(5)}
 print(sqr_number)
+
+#Type
+print(type(sqr_number))
