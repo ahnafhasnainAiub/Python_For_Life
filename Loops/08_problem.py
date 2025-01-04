@@ -1,6 +1,6 @@
 # Check the number is prime or not
 
-number = 32
+number = 31
 
 is_prime = True
 
