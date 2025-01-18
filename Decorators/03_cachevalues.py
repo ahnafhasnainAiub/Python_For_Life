@@ -2,11 +2,15 @@
 import time
 
 def cached(func):
+
     cache_value = {}
     print(cache_value)
+    
     def wrapper(*args):
+        
         if args in cache_value:
             return cache_value[args]
+        
         result = func(*args)
         cache_value[args] = result
         return result
