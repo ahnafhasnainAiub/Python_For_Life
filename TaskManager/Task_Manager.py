@@ -1,10 +1,28 @@
 
+import json
+
+def load_data():   
+    try:
+        with open('taskmanager.txt', 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return []
+
+def data_helper(tasks):
+    with open('taskmanager.txt', 'w') as file:
+        json.dump(tasks, file)
+
 
 def show_all(tasks):
-    pass
+    for index, task in enumerate(tasks, start=1):
+        print(f"{index}. ")
 
 def add_task(tasks):
-    pass
+    name = input("Enter Task name: ")
+    time = input("Enter Task time: ")
+
+    tasks.append({'name': name, 'time': time})
+    data_helper(tasks)
 
 def update_task(tasks):
     pass
@@ -13,7 +31,7 @@ def delete_task(tasks):
     pass
 
 def main():
-    tasks = []
+    tasks = load_data()
 
     while True:
         print("Welcome to the Task Manager App | Choose an option")
@@ -22,7 +40,9 @@ def main():
         print("Enter 3 for Update task")
         print("Enter 4 for Delete task")
         print("Enter 5 for Exit")
-        choice = input("Please enter a value")
+        choice = input("Please enter a value: ")
+
+        print(tasks)
 
         match choice:
             case '1':
