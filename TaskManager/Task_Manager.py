@@ -14,8 +14,10 @@ def data_helper(tasks):
 
 
 def show_all(tasks):
+    print("\n")
     for index, task in enumerate(tasks, start=1):
-        print(f"{index}. ")
+        print(f"{index}. {task['name']}, Duration : {task['time']}.")
+       
 
 def add_task(tasks):
     name = input("Enter Task name: ")
@@ -25,16 +27,32 @@ def add_task(tasks):
     data_helper(tasks)
 
 def update_task(tasks):
-    pass
+    show_all(tasks)
+    index = int(input("Enter the task number : "))
+    if 1<= index <= len(tasks):
+        name = input("Enter Task name: ")
+        time = input("Enter the task duaration: ")
+        tasks[index-1] = {'name':name, 'time': time}
+        data_helper(tasks)
+    else:
+        print("Invalid Task Number")
 
-def delete_task(tasks):
-    pass
+def delete_task(tasks):  
+    show_all(tasks)
+    index = int(input("Enter the task number that you wants to delete: "))
+    
+    if 1<= index <= len(tasks):
+        del tasks[index -1]
+        data_helper(tasks)
+        print(f"Task number {index} is Succesfully Deleted")
+    else:
+        print("Invalid task number provided")
 
 def main():
     tasks = load_data()
 
     while True:
-        print("Welcome to the Task Manager App | Choose an option")
+        print("\n Welcome to the Task Manager App | Choose an option")
         print("Enter 1 for Show all the task")
         print("Enter 2 for Add a new task")
         print("Enter 3 for Update task")
@@ -42,7 +60,7 @@ def main():
         print("Enter 5 for Exit")
         choice = input("Please enter a value: ")
 
-        print(tasks)
+        # print(tasks)
 
         match choice:
             case '1':
